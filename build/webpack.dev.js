@@ -13,5 +13,8 @@ module.exports = merge(baseConfig, {
         compress: false, //gzip压缩，开发环境不开启，提升热更新速度
         hot: true, // 开启热更新
         historyApiFallback:true, // 解决history路由404问题
+        static: {
+            directory: path.join(__dirname, "../public"), //托管静态资源public文件夹
+        }
     }
 })

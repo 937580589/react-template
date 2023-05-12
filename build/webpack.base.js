@@ -21,6 +21,9 @@ module.exports = {
                     options: {
                         presets: [
                             ['@babel/preset-react'],
+                        ],
+                        plugins: [
+                            ['@babel/plugin-proposal-decorators', { 'legacy': true }]
                         ]
                     }
                 }
