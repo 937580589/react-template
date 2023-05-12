@@ -5,9 +5,12 @@ const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const globAll = require('glob-all');
+const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+
 
 module.exports = merge(baseConfig, {
     mode: 'production',// 生产环境
@@ -29,6 +32,15 @@ module.exports = merge(baseConfig, {
         // 抽离css插件
         new MiniCssExtractPlugin({
             filename: 'static/css/[name].[contenthash:8].css' // 抽离css的输出目录和名称
+        }),
+        // 清理无用css
+        new PurgeCSSPlugin({
+            // 检测src下所有js文件和public下index.html中使用的类名和id和标签名称
+            // 只打包这些文件中用到的样式
+            paths: globAll.sync([
+                `${path.join(__dirname, '../src')}/**/*.js`,
+                // path.join(__dirname, '../public/index.html')
+            ]),
         }),
         new TerserPlugin({ // 压缩js
             parallel: true, // 开启多线程压缩
