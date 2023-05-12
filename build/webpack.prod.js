@@ -7,6 +7,7 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(baseConfig, {
     mode: 'production',// 生产环境
@@ -28,6 +29,14 @@ module.exports = merge(baseConfig, {
         // 抽离css插件
         new MiniCssExtractPlugin({
             filename: 'static/css/[name].css' // 抽离css的输出目录和名称
+        }),
+        new TerserPlugin({ // 压缩js
+            parallel: true, // 开启多线程压缩
+            terserOptions: {
+                compress: {
+                    pure_funcs: ["console.log"] // 删除console.log
+                }
+            }
         }),
     ],
     optimization: {

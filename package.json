@@ -34,6 +34,7 @@
     "react-refresh": "^0.14.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.2",
+    "terser-webpack-plugin": "^5.3.8",
     "thread-loader": "^4.0.1",
     "webpack": "^5.82.1",
     "webpack-bundle-analyzer": "^4.8.0",
