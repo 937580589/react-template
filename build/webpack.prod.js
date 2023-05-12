@@ -15,9 +15,11 @@ module.exports = merge(baseConfig, {
                 {
                     from: path.resolve(__dirname, '../public'), // 复制public下文件
                     to: path.resolve(__dirname, '../dist'), // 复制到dist目录中
-                    filter: source => {
-                        return !source.includes('index.html') // 忽略index.html
-                    }
+                    noErrorOnMissing: true, // 忽略文件夹为空时报错
+                    // public下有自建的html模板则使用下面的代码忽略复制
+                    // filter: source => {
+                    //     return !source.includes('index.html') // 忽略index.html
+                    // },
                 },
             ],
         }),

@@ -16,7 +16,9 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-refresh: ^0.14.0
+  speed-measure-webpack-plugin: ^1.5.0
   style-loader: ^3.3.2
+  thread-loader: ^4.0.1
   webpack: ^5.82.1
   webpack-cli: ^5.1.1
   webpack-dev-server: ^4.15.0
@@ -40,7 +42,9 @@ devDependencies:
   html-webpack-plugin: 5.5.1_webpack@5.82.1
   postcss-loader: 7.3.0_gsxua4cj7oxhf5dagqvua3q3uq
   react-refresh: 0.14.0
+  speed-measure-webpack-plugin: 1.5.0_webpack@5.82.1
   style-loader: 3.3.2_webpack@5.82.1
+  thread-loader: 4.0.1_webpack@5.82.1
   webpack: 5.82.1_webpack-cli@5.1.1
   webpack-cli: 5.1.1_saf7qo7mee5vb6lup77ozeyhsi
   webpack-dev-server: 4.15.0_7mg36d3tiqmfwaxmjrzyefwvom
@@ -893,6 +897,13 @@ packages:
       color-convert: 1.9.3
     dev: true
 
+  /ansi-styles/4.3.0:
+    resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
+    engines: {node: '>=8'}
+    dependencies:
+      color-convert: 2.0.1
+    dev: true
+
   /anymatch/3.1.3:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
@@ -1063,6 +1074,14 @@ packages:
       supports-color: 5.5.0
     dev: true
 
+  /chalk/4.1.2:
+    resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
+    engines: {node: '>=10'}
+    dependencies:
+      ansi-styles: 4.3.0
+      supports-color: 7.2.0
+    dev: true
+
   /chokidar/3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
@@ -1105,8 +1124,19 @@ packages:
       color-name: 1.1.3
     dev: true
 
+  /color-convert/2.0.1:
+    resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
+    engines: {node: '>=7.0.0'}
+    dependencies:
+      color-name: 1.1.4
+    dev: true
+
   /color-name/1.1.3:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
+    dev: true
+
+  /color-name/1.1.4:
+    resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: true
 
   /colorette/2.0.20:
@@ -2066,6 +2096,10 @@ packages:
     hasBin: true
     dev: true
 
+  /json-parse-better-errors/1.0.2:
+    resolution: {integrity: sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==}
+    dev: true
+
   /json-parse-even-better-errors/2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
     dev: true
@@ -2956,6 +2990,16 @@ packages:
       - supports-color
     dev: true
 
+  /speed-measure-webpack-plugin/1.5.0_webpack@5.82.1:
+    resolution: {integrity: sha512-Re0wX5CtM6gW7bZA64ONOfEPEhwbiSF/vz6e2GvadjuaPrQcHTQdRGsD8+BE7iUOysXH8tIenkPCQBEcspXsNg==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      webpack: ^1 || ^2 || ^3 || ^4 || ^5
+    dependencies:
+      chalk: 4.1.2
+      webpack: 5.82.1_webpack-cli@5.1.1
+    dev: true
+
   /stackframe/1.3.4:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
     dev: true
@@ -3010,6 +3054,13 @@ packages:
       has-flag: 3.0.0
     dev: true
 
+  /supports-color/7.2.0:
+    resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
+    engines: {node: '>=8'}
+    dependencies:
+      has-flag: 4.0.0
+    dev: true
+
   /supports-color/8.1.1:
     resolution: {integrity: sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==}
     engines: {node: '>=10'}
@@ -3060,6 +3111,19 @@ packages:
       acorn: 8.8.2
       commander: 2.20.3
       source-map-support: 0.5.21
+    dev: true
+
+  /thread-loader/4.0.1_webpack@5.82.1:
+    resolution: {integrity: sha512-Xy0lEzv4xAnTHjKD+0gymvxk1kYc8/yIBHhd+mcnVPuBLB7ooODNA9TqhxJuLOe5TV9NBvOKWq8jrvgCtMvMYw==}
+    engines: {node: '>= 16.10.0'}
+    peerDependencies:
+      webpack: ^5.0.0
+    dependencies:
+      json-parse-better-errors: 1.0.2
+      loader-runner: 4.3.0
+      neo-async: 2.6.2
+      schema-utils: 4.0.1
+      webpack: 5.82.1_webpack-cli@5.1.1
     dev: true
 
   /thunky/1.1.0:

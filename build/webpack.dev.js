@@ -20,5 +20,6 @@ module.exports = merge(baseConfig, {
     },
     plugins: [
         new ReactRefreshWebpackPlugin(), // 添加热更新插件
-    ]
+    ],
+    devtool: 'eval-cheap-module-source-map'
 })
