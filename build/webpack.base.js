@@ -3,7 +3,8 @@
  */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const isDEV = process.env.NODE_ENV === 'development' // 是否是开发模式
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const isDev = process.env.NODE_ENV === 'development' // 是否是开发模式
 
 module.exports = {
     entry: path.resolve(__dirname, '../src/index.js'),   // 入口文件
@@ -29,7 +30,7 @@ module.exports = {
                             ['@babel/preset-react'],
                         ],
                         plugins: [
-                            isDEV && require.resolve('react-refresh/babel'), // 如果是开发模式,就启动react热更新插件
+                            isDev && require.resolve('react-refresh/babel'), // 如果是开发模式,就启动react热更新插件
                             ['@babel/plugin-proposal-decorators', { 'legacy': true }],
                         ].filter(Boolean),
                     }
@@ -39,7 +40,7 @@ module.exports = {
             {
                 test: /\.css?$/, // 匹配css文件
                 use: [
-                    'style-loader',
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,   // 开发环境使用style-looader,打包模式抽离css
                     'css-loader',
                     {
                         loader: 'postcss-loader',
