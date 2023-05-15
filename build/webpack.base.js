@@ -39,7 +39,7 @@ module.exports = {
                 exclude: /node_modules/,    // 排除 node_modules 目录
             },
             {
-                test: /\.css?$/, // 匹配css文件
+                test: /\.(css|less)$/, // 匹配css文件
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,   // 开发环境使用style-looader,打包模式抽离css
                     'css-loader',
@@ -50,7 +50,9 @@ module.exports = {
                                 plugins: ['autoprefixer']
                             }
                         }
-                    }],
+                    },
+                    'less-loader'
+                ],
                 exclude: /node_modules/,    // 排除 node_modules 目录
             },
             {
@@ -115,7 +117,7 @@ module.exports = {
                 </head>
                 <body><div id="root"></div></body>
                 </html>`,
-        })
+        }),
     ],
     cache: {
         type: 'filesystem'  // 使用文件缓存
