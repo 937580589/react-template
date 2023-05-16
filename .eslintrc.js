@@ -7,7 +7,6 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        'plugin:react/jsx-runtime',
     ],
     "overrides": [
     ],
@@ -16,13 +15,21 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "@emotion"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/no-unknown-property": [2, { "ignore": ["css"] }],
+        "@emotion/no-unused-css": "off",
     },
     "settings": {
         "react": {
             "version": "detect",
+        },
+        "emotion": {
+            "autoLabel": "dev-only",
+            "labelFormat": "[local]"
         }
     }
 }

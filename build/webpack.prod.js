@@ -7,7 +7,6 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const globAll = require('glob-all');
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -28,10 +27,6 @@ module.exports = merge(baseConfig, {
                     // },
                 },
             ],
-        }),
-        // 抽离css插件
-        new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[contenthash:8].css' // 抽离css的输出目录和名称
         }),
         // 清理无用css
         new PurgeCSSPlugin({
